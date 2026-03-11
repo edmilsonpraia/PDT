@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPDT - Departamento de Pesquisa, Desenvolvimento e Tecnologia | Copia Group of Companies, SA</title>
+    <meta name="description" content="Departamento de Pesquisa, Desenvolvimento e Tecnologia da Copia Group of Companies, SA. Inovação em petróleo, gás e biocombustíveis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="ICONE CGC.jpg" type="image/jpeg">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if(localStorage.getItem('dpdt-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="#" class="logo">
+                        <img src="ICONE CGC.jpg" alt="Copia Group of Companies" class="logo-img">
+                        <span class="logo-text">Copia Group of Companies, SA</span>
+                    </a>
+                </div>
+
+                <!-- Nav Menu (mobile: slide panel / desktop: inline) -->
+                <div class="header__menu" id="nav-menu">
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav__item"><a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a></li>
+                            <li class="nav__item"><a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                            <li class="nav__item"><a href="#areas" class="nav-link" data-i18n="nav.areas">Áreas</a></li>
+                            <li class="nav__item"><a href="#softwares" class="nav-link">Softwares</a></li>
+                            <li class="nav__item"><a href="#servicos" class="nav-link" data-i18n="nav.services">Serviços</a></li>
+                            <li class="nav__item"><a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a></li>
+                            <li class="nav__item"><a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Mobile only: extra CTA -->
+                    <div class="header__menu-footer">
+                        <a href="#softwares" class="btn-nav-cta btn-nav-cta--block">DPDT <i data-lucide="code-2" width="14" height="14" stroke-width="2.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="header__right">
+                    <a href="#softwares" class="btn-nav-cta header__cta">DPDT <i data-lucide="code-2" width="14" height="14" stroke-width="2.5"></i></a>
+                    <button class="theme-toggle" id="theme-toggle" title="Dark / Light mode">
+                        <i data-lucide="moon" width="16" height="16" class="theme-icon-dark"></i>
+                        <i data-lucide="sun" width="16" height="16" class="theme-icon-light"></i>
+                    </button>
+                    <button class="lang-toggle" id="lang-toggle" title="Change language">
+                        <i data-lucide="globe" width="16" height="16"></i>
+                        <span id="lang-label">PT</span>
+                    </button>
+                    <button class="hamburger" id="nav-toggle" aria-label="Menu">
+                        <span class="hamburger__bar"></span>
+                        <span class="hamburger__bar"></span>
+                        <span class="hamburger__bar"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-bg"></div>
+            <div class="hero-content container">
+                <h1 class="hero-title" data-i18n-html="hero.title">
+                    Pesquisa, Desenvolvimento e<br><span class="gold-text">Tecnologia</span>
+                </h1>
+                <p class="hero-description" data-i18n="hero.desc">
+                    Departamento de inovação da Copia Group of Companies, SA. Tecnologia avançada em inteligência artificial e machine learning para interpretação sísmica, simulação de reservatórios e soluções para o sector de petróleo, gás e biocombustíveis.
+                </p>
+                <div class="hero-actions">
+                    <a href="#softwares" class="btn btn-gold">
+                        <span data-i18n="hero.btn1">Explorar Softwares</span>
+                        <i data-lucide="arrow-right" width="18" height="18" stroke-width="2.5"></i>
+                    </a>
+                    <a href="#contacto" class="btn btn-outline-white" data-i18n="hero.btn2">Fale Connosco</a>
+                </div>
+                <div class="hero-scroll">
+                    <i data-lucide="chevron-down" width="24" height="24"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section section-white" id="sobre">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n-html="about.title">Sobre o <span class="underline-gold">DPDT</span></h2>
+                </div>
+                <p class="section-subtitle" data-i18n="about.subtitle">Departamento de Pesquisa, Desenvolvimento e Tecnologia da Copia Group of Companies, SA</p>
+                <p class="section-text" data-i18n="about.text">
+                    O DPDT é a unidade estratégica de inovação do grupo, especializada no desenvolvimento de software avançado que utiliza inteligência artificial e machine learning para resolver desafios complexos na exploração e produção de petróleo e gás. As nossas soluções são projectadas para melhorar a eficiência, reduzir custos e aumentar as taxas de sucesso.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="activity" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <span class="stat-value" data-target="95">0</span><span class="stat-percent">%</span>
+                        <span class="stat-label" data-i18n="stats.accuracy">Accuracy Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="clock" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <span class="stat-value" data-target="80">0</span><span class="stat-percent">%</span>
+                        <span class="stat-label" data-i18n="stats.processing">Processing Time Reduction</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="sparkles" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <span class="stat-value" data-target="92">0</span><span class="stat-percent">%</span>
+                        <span class="stat-label" data-i18n="stats.ai">AI-Integrated Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Areas of Operation -->
+        <section class="section section-light" id="areas">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n-html="areas.title">Áreas de <span class="underline-gold">Actuação</span></h2>
+                </div>
+                <p class="section-subtitle" data-i18n="areas.subtitle">Os três pilares estratégicos do DPDT no sector energético</p>
+                <div class="areas-grid">
+                    <div class="area-card">
+                        <div class="area-icon-wrap">
+                            <i data-lucide="droplet" width="40" height="40" stroke-width="1.2"></i>
+                        </div>
+                        <h3 data-i18n="areas.oil.title">Petróleo</h3>
+                        <p data-i18n="areas.oil.desc">Pesquisa e desenvolvimento de tecnologias para exploração, produção e refino. Análise de reservatórios, controlo de qualidade e optimização de processos de extracção.</p>
+                        <ul class="check-list">
+                            <li data-i18n="areas.oil.f1">Análise e caracterização de reservatórios</li>
+                            <li data-i18n="areas.oil.f2">Optimização de processos de produção</li>
+                            <li data-i18n="areas.oil.f3">Controlo de qualidade de derivados</li>
+                            <li data-i18n="areas.oil.f4">Tecnologias de recuperação avançada</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon-wrap">
+                            <i data-lucide="flame" width="40" height="40" stroke-width="1.2"></i>
+                        </div>
+                        <h3 data-i18n="areas.gas.title">Gás Natural</h3>
+                        <p data-i18n="areas.gas.desc">Investigação em processamento, transporte e utilização de gás natural. Tecnologias de liquefacção (GNL), compressão (GNC) e aproveitamento energético.</p>
+                        <ul class="check-list">
+                            <li data-i18n="areas.gas.f1">Processamento e tratamento de gás</li>
+                            <li data-i18n="areas.gas.f2">Tecnologias de liquefacção (GNL)</li>
+                            <li data-i18n="areas.gas.f3">Monitoramento de gasodutos</li>
+                            <li data-i18n="areas.gas.f4">Conversão e aproveitamento energético</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-icon-wrap">
+                            <i data-lucide="leaf" width="40" height="40" stroke-width="1.2"></i>
+                        </div>
+                        <h3 data-i18n="areas.bio.title">Biocombustíveis</h3>
+                        <p data-i18n="areas.bio.desc">Combustíveis renováveis a partir de fontes biológicas. Investigação em bioetanol, biodiesel e biogás com foco na sustentabilidade e transição energética.</p>
+                        <ul class="check-list">
+                            <li data-i18n="areas.bio.f1">Produção de bioetanol e biodiesel</li>
+                            <li data-i18n="areas.bio.f2">Tecnologias de conversão de biomassa</li>
+                            <li data-i18n="areas.bio.f3">Biogás e digestão anaeróbia</li>
+                            <li data-i18n="areas.bio.f4">Análise de ciclo de vida</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Softwares Section -->
+        <section class="section section-white" id="softwares">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n-html="sw.title">Os Nossos <span class="underline-gold">Softwares</span></h2>
+                </div>
+                <p class="section-subtitle" data-i18n="sw.subtitle">Soluções de software de ponta para a indústria de petróleo e gás</p>
+                <p class="section-text" data-i18n="sw.text">
+                    Na COPIA, especializamo-nos no desenvolvimento de software avançado que utiliza inteligência artificial e machine learning para resolver desafios complexos na exploração e produção de petróleo e gás. As nossas soluções são projectadas para melhorar a eficiência, reduzir custos e aumentar as taxas de sucesso.
+                </p>
+
+                <div class="software-grid">
+                    <!-- COPIA Seis -->
+                    <div class="software-card">
+                        <div class="software-header">
+                            <div class="software-icon">
+                                <i data-lucide="activity" width="28" height="28" stroke-width="1.5"></i>
+                            </div>
+                            <span class="software-badge badge-green">Seismic Interpretation</span>
+                        </div>
+                        <h3 class="software-name">COPIA Seis</h3>
+                        <h4 class="software-subtitle">AI-Powered Advanced Seismic Interpretation</h4>
+                        <p class="software-desc">COPIA Seis is a state-of-the-art seismic interpretation tool that uses artificial intelligence to automate and enhance seismic data analysis. Our technology helps geophysicists identify structures and features with unprecedented accuracy and efficiency.</p>
+                        <ul class="feature-list">
+                            <li>AI-powered automatic horizon picking</li>
+                            <li>Seismic attribute extraction and analysis</li>
+                            <li>3D attribute analysis and visualization</li>
+                            <li>User-friendly and intuitive interface</li>
+                            <li>Integration with major seismic platforms</li>
+                            <li>Real-time analysis and quality control</li>
+                        </ul>
+                    </div>
+
+                    <!-- COPIA DynamicSim -->
+                    <div class="software-card">
+                        <div class="software-header">
+                            <div class="software-icon">
+                                <i data-lucide="database" width="28" height="28" stroke-width="1.5"></i>
+                            </div>
+                            <span class="software-badge badge-purple">Reservoir Simulation</span>
+                        </div>
+                        <h3 class="software-name">COPIA DynamicSim</h3>
+                        <h4 class="software-subtitle">ML-Powered Gas and Condensate Simulator</h4>
+                        <p class="software-desc">COPIA DynamicSim revolutionizes gas and condensate reservoir simulation using advanced machine learning algorithms. Our platform provides accurate modeling of reservoir behavior, helping optimize production strategies and maximize recovery.</p>
+                        <ul class="feature-list">
+                            <li>High-fidelity reservoir simulation</li>
+                            <li>ML-powered PVT behavior prediction</li>
+                            <li>Production scenario optimization</li>
+                            <li>Advanced visualization and reporting</li>
+                            <li>Integration with field data</li>
+                            <li>Uncertainty analysis and risk management</li>
+                        </ul>
+                    </div>
+                    <!-- COPIA Digital Lab -->
+                    <div class="software-card software-card-full">
+                        <div class="software-header">
+                            <div class="software-icon">
+                                <i data-lucide="box" width="28" height="28" stroke-width="1.5"></i>
+                            </div>
+                            <span class="software-badge badge-blue">Integrated Digital Platform</span>
+                        </div>
+                        <h3 class="software-name">COPIA Digital Lab</h3>
+                        <h4 class="software-subtitle" data-i18n="sw.dl.subtitle">Plataforma Integrada de Engenharia, Geociências e Construção Civil</h4>
+                        <p class="software-desc" data-i18n="sw.dl.desc">O COPIA Digital Lab integra dados geoespaciais e de engenharia num ambiente tridimensional unificado, abrangendo desde o planeamento de levantamentos sísmicos e modelação geológica até à gestão de obras de construção civil, fiscalização, controlo de qualidade e sustentabilidade. Com recurso a inteligência artificial e aprendizagem automática, automatiza a otimização de geometrias de aquisição, prevê custos e prazos, avalia riscos ambientais, monitoriza a conformidade normativa e gera relatórios de qualidade e impacto ambiental.</p>
+                        <div class="feature-columns">
+                            <ul class="feature-list">
+                                <li><span data-i18n="sw.dl.f1">Visualização 3D interactiva e modelação geológica</span></li>
+                                <li><span data-i18n="sw.dl.f2">Planeamento de levantamentos sísmicos com IA</span></li>
+                                <li><span data-i18n="sw.dl.f3">Análise geoespacial e dashboards em tempo real</span></li>
+                                <li><span data-i18n="sw.dl.f4">Previsão de custos, prazos e avaliação de riscos</span></li>
+                            </ul>
+                            <ul class="feature-list">
+                                <li><span data-i18n="sw.dl.f5">Gestão de obras e fiscalização de construção civil</span></li>
+                                <li><span data-i18n="sw.dl.f6">Controlo de qualidade e conformidade normativa</span></li>
+                                <li><span data-i18n="sw.dl.f7">Relatórios de impacto ambiental e sustentabilidade</span></li>
+                                <li><span data-i18n="sw.dl.f8">Arquitectura multi-serviço integrada</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COPIA Colect -->
+                    <div class="software-card software-card-full">
+                        <div class="software-header">
+                            <div class="software-icon">
+                                <i data-lucide="map-pin" width="28" height="28" stroke-width="1.5"></i>
+                            </div>
+                            <span class="software-badge badge-orange">GPS & Mapping</span>
+                        </div>
+                        <h3 class="software-name">COPIA Colect</h3>
+                        <h4 class="software-subtitle" data-i18n="sw.co.subtitle">Colector de Coordenadas GPS com Mapeamento Integrado</h4>
+                        <p class="software-desc" data-i18n="sw.co.desc">O COPIA Colect é uma aplicação PWA instalável para colecta de coordenadas GPS com mapa interactivo. Ideal para topografia, demarcação de terrenos, mapeamento de campo e registo de trajetos. Funciona offline, com exportação em múltiplos formatos e tema claro/escuro.</p>
+                        <div class="feature-columns">
+                            <ul class="feature-list">
+                                <li><span data-i18n="sw.co.f1">Localização GPS com precisão em metros</span></li>
+                                <li><span data-i18n="sw.co.f2">Colecta de pontos com legenda, categoria, cor e foto</span></li>
+                                <li><span data-i18n="sw.co.f3">Rastreamento contínuo de trajetos</span></li>
+                                <li><span data-i18n="sw.co.f4">Medição de distâncias e cálculo de áreas</span></li>
+                            </ul>
+                            <ul class="feature-list">
+                                <li><span data-i18n="sw.co.f5">Perfil de elevação com gráfico de relevo</span></li>
+                                <li><span data-i18n="sw.co.f6">Exportação em JSON, GPX e KML (Google Earth)</span></li>
+                                <li><span data-i18n="sw.co.f7">App instalável (PWA) — funciona offline</span></li>
+                                <li><span data-i18n="sw.co.f8">Múltiplos projectos e partilha por link</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section section-light" id="servicos">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n-html="svc.title">Serviços e <span class="underline-gold">Competências</span></h2>
+                </div>
+                <p class="section-subtitle" data-i18n="svc.subtitle">O DPDT oferece serviços que vão da pesquisa laboratorial ao desenvolvimento de software especializado</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="microscope" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s1.title">Pesquisa & Investigação</h3>
+                        <p data-i18n="svc.s1.desc">Estudos de viabilidade, análise laboratorial, caracterização de materiais e investigação científica aplicada.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="wrench" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s2.title">Engenharia de Processos</h3>
+                        <p data-i18n="svc.s2.desc">Optimização de processos industriais, simulação, scale-up e implementação de melhorias operacionais.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="monitor" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s3.title">Soluções Digitais</h3>
+                        <p data-i18n="svc.s3.desc">Software especializado, sistemas SCADA, IoT industrial, plataformas de monitoramento e automação.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="shield" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s4.title">Segurança & Ambiente</h3>
+                        <p data-i18n="svc.s4.desc">Gestão HSE, estudos de impacto ambiental, análise de riscos e conformidade regulatória.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="brain" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s5.title">Análise de Dados & IA</h3>
+                        <p data-i18n="svc.s5.desc">Data science, modelos preditivos, machine learning para optimização de reservatórios e processos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i data-lucide="users" width="28" height="28" stroke-width="1.5"></i>
+                        </div>
+                        <h3 data-i18n="svc.s6.title">Consultoria Técnica</h3>
+                        <p data-i18n="svc.s6.desc">Assessoria especializada, transferência de tecnologia, formação de equipas e auditorias técnicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section-cta">
+            <div class="container">
+                <h2 data-i18n="cta.title">Ready to Transform Your Operations?</h2>
+                <p data-i18n="cta.desc">Contact us to learn more about how our software solutions can enhance your exploration and production efficiency.</p>
+                <div class="cta-actions">
+                    <a href="#contacto" class="btn btn-outline-white" data-i18n="cta.btn1">Get in Touch</a>
+                    <a href="#softwares" class="btn btn-outline-white" data-i18n="cta.btn2">Explore Software</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section section-white" id="contacto">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n-html="contact.title">Fale <span class="underline-gold">Connosco</span></h2>
+                </div>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Tem um projecto ou precisa de suporte técnico? A equipa DPDT está disponível.</p>
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail" width="22" height="22"></i>
+                            </div>
+                            <div>
+                                <strong data-i18n="contact.email">Email</strong>
+                                <p>dpdt@copiagroupofcompanies.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone" width="22" height="22"></i>
+                            </div>
+                            <div>
+                                <strong data-i18n="contact.phone">Telefone</strong>
+                                <p>+244 942 373 623</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin" width="22" height="22"></i>
+                            </div>
+                            <div>
+                                <strong data-i18n="contact.location">Localização</strong>
+                                <p>Luanda, Angola</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" data-i18n-ph="form.name" placeholder="Nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" data-i18n-ph="form.email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" data-i18n-ph="form.company" placeholder="Empresa / Instituição">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected data-i18n="form.select">Selecione o assunto</option>
+                                <option data-i18n="form.opt1">Projecto de Pesquisa</option>
+                                <option data-i18n="form.opt2">Consultoria Técnica</option>
+                                <option data-i18n="form.opt3">Software Solutions</option>
+                                <option data-i18n="form.opt4">Parceria / Colaboração</option>
+                                <option data-i18n="form.opt5">Oportunidades de Carreira</option>
+                                <option data-i18n="form.opt6">Outro Assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" data-i18n-ph="form.message" placeholder="A sua mensagem..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-full">
+                            <span data-i18n="form.submit">Enviar Mensagem</span>
+                            <i data-lucide="arrow-right" width="18" height="18"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="section-newsletter">
+            <div class="container">
+                <h2 data-i18n="news.title">Receive Our News</h2>
+                <p data-i18n="news.desc">Subscribe to receive updates about our projects and initiatives</p>
+                <form class="newsletter-form">
+                    <input type="email" data-i18n-ph="news.placeholder" placeholder="Your email address">
+                    <button type="submit" class="btn btn-gold">
+                        <span data-i18n="news.btn">Subscribe</span>
+                        <i data-lucide="arrow-right" width="16" height="16" stroke-width="2.5"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img src="ICONE CGC.jpg" alt="CGC" class="footer-logo-img">
+                        <span>Copia Group of Companies, SA</span>
+                    </a>
+                    <p data-i18n="footer.desc">Departamento de Pesquisa, Desenvolvimento e Tecnologia. Inovação em petróleo, gás natural e biocombustíveis.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.nav">Navegação</h4>
+                    <ul>
+                        <li><a href="#sobre" data-i18n="footer.about">Sobre o DPDT</a></li>
+                        <li><a href="#areas" data-i18n="footer.areas">Áreas de Actuação</a></li>
+                        <li><a href="#softwares">Softwares</a></li>
+                        <li><a href="#servicos" data-i18n="footer.services">Serviços</a></li>
+                        <li><a href="blog.html" data-i18n="footer.blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Softwares</h4>
+                    <ul>
+                        <li><a href="#softwares">COPIA Seis</a></li>
+                        <li><a href="#softwares">COPIA DynamicSim</a></li>
+                        <li><a href="#softwares">COPIA Digital Lab</a></li>
+                        <li><a href="#softwares">COPIA Colect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.company">Empresa</h4>
+                    <ul>
+                        <li><a href="#contacto" data-i18n="footer.contact">Contacto</a></li>
+                        <li><a href="https://www.copiagroupofcompanies.com/" target="_blank" rel="noopener">Copia Group</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copy">&copy; 2026 DPDT - Copia Group of Companies, SA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v=2"></script>
+</body>
+</html>

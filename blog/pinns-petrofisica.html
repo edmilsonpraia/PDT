@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PINNs em Petrofísica - DPDT | Copia Group of Companies, SA</title>
+    <meta name="description" content="Estudo crítico sobre Physics-Informed Neural Networks aplicadas à previsão de porosidade em formações petrolíferas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../ICONE CGC.jpg" type="image/jpeg">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+    <script>if(localStorage.getItem('dpdt-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="../index.html" class="logo">
+                        <img src="../ICONE CGC.jpg" alt="Copia Group of Companies" class="logo-img">
+                        <span class="logo-text">Copia Group of Companies, SA</span>
+                    </a>
+                </div>
+
+                <!-- Nav Menu -->
+                <div class="header__menu" id="nav-menu">
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav__item"><a href="../index.html#inicio" class="nav-link" data-i18n="nav.home">Início</a></li>
+                            <li class="nav__item"><a href="../index.html#sobre" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                            <li class="nav__item"><a href="../index.html#areas" class="nav-link" data-i18n="nav.areas">Áreas</a></li>
+                            <li class="nav__item"><a href="../index.html#softwares" class="nav-link">Softwares</a></li>
+                            <li class="nav__item"><a href="../index.html#servicos" class="nav-link" data-i18n="nav.services">Serviços</a></li>
+                            <li class="nav__item"><a href="../blog.html" class="nav-link active" data-i18n="nav.blog">Blog</a></li>
+                            <li class="nav__item"><a href="../index.html#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header__menu-footer">
+                        <a href="../index.html#softwares" class="btn-nav-cta btn-nav-cta--block">DPDT <i data-lucide="code-2" width="14" height="14" stroke-width="2.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="header__right">
+                    <a href="../index.html#softwares" class="btn-nav-cta header__cta">DPDT <i data-lucide="code-2" width="14" height="14" stroke-width="2.5"></i></a>
+                    <button class="theme-toggle" id="theme-toggle" title="Dark / Light mode">
+                        <i data-lucide="moon" width="16" height="16" class="theme-icon-dark"></i>
+                        <i data-lucide="sun" width="16" height="16" class="theme-icon-light"></i>
+                    </button>
+                    <button class="lang-toggle" id="lang-toggle" title="Change language">
+                        <i data-lucide="globe" width="16" height="16"></i>
+                        <span id="lang-label">PT</span>
+                    </button>
+                    <button class="hamburger" id="nav-toggle" aria-label="Menu">
+                        <span class="hamburger__bar"></span>
+                        <span class="hamburger__bar"></span>
+                        <span class="hamburger__bar"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="article-back"><i data-lucide="arrow-left" width="16" height="16"></i> Blog</a>
+                <div class="article-badge"><span class="blog-card__badge badge-green">PINNs &middot; Deep Learning</span></div>
+                <h1>PINNs em Petrofísica: A Integração entre Deep Learning e Equações de Rocha</h1>
+                <p class="article-subtitle">A Integração entre Deep Learning e Equações de Rocha</p>
+                <div class="article-meta">
+                    <span><i data-lucide="user" width="14" height="14"></i> Edmilson Delfim Praia &amp; Cirilo Cauxeiro</span>
+                    <span><i data-lucide="calendar" width="14" height="14"></i> 21 Dezembro 2024</span>
+                </div>
+                <div class="article-tags blog-card__tags">
+                    <span class="blog-tag">PINNs</span>
+                    <span class="blog-tag">Deep Learning</span>
+                    <span class="blog-tag">Petrofísica</span>
+                    <span class="blog-tag">Machine Learning</span>
+                    <span class="blog-tag">Porosidade</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="article-body">
+            <div class="container">
+
+                <!-- INTRODUCAO -->
+                <h2>Introdução</h2>
+
+                <p>Em análise e caracterização de reservatórios de petróleo e gás, constitui um problema inverso mal-posto (ill-posed inverse problem). A partir de algumas análises e observações em dados geofísicos -- perfis de poços como as curvas de densidade RHOB, tempo de trânsito sónico DT e raios gama GR, foi possível inferir propriedades petrofísicas crucias como a porosidade (&phi;), que são indicadores de rocha reservatório que podem indicar a possibilidade de ter um volume de hidrocarbornetos in-situ e sua produtividade. Em modelos de física de rocha, é evidente de que a natureza não é a única instável desta inversão que são na sua essência, correlações empíricas ou semi-empíricas com um domínio de validade restrito [8].</p>
+
+                <p>O avanço do Aprendizado Profundo (Deep Learning) trouxe uma nova maneira de pensar. As Redes Neurais, por exemplo, tem a capacidade teórica de aprender qualquer relacionamento não linear e contínuo entre as medições feitas no poço e as propriedades da rocha, graças ao que é conhecido como Teorema da Aproximação Universal. Isso significa que elas podem superar as limitações dos modelos físicos mais simples ou lineares. Mas, essa flexibilidade também traz alguns desafios. Uma delas é que as redes muitas vezes funcionam como uma caixa-preta, ou seja, é difícil entender exatamente como elas chegam as suas respostas.</p>
+
+                <p>As Redes Neurais Informadas por Física conhecidas como PINNs (Physics-Informed Neural Networks - PINNs), foram criadas por Raissi, Perdikaris e Karniadakis em 2019 [1]. Surge como tentativa juntar duas ideias diferentes: o aprendizado de máquina e o conhecimento das leis físicas.</p>
+
+                <p>A ideia principal é que, ao incluir as equações que descrevem a física do problema, como as equações diferenciais parciais (EDPs) na própria função de perda da rede neural, podemos limitar as possíveis soluções, fazer com que o modelo seja mais confiável e obter previsões que façam sentido do ponto de vista físico, mesmo quando temos poucos dados disponíveis. Este estudo analisa essa ideia de forma crítica, especialmente no caso de prever porosidade, usando um conjunto de dados reais do Campo EDP em Angola.</p>
+
+                <!-- FORMULACAO MATEMATICA -->
+                <h2>Formulação Matemática das Equações Formativas em Petrofísica</h2>
+
+                <p>Para entender a inovação introduzida pelas PINNs, é essencial reexaminar os princípios matemáticos dos modelos de física de rocha que sustentam a análise de perfis de poço. Essas equações refletem a tentativa de representar as intrincadas conexões entre as medições geofísicas e as características da rocha com expressões matemáticas fundamentadas em observações empíricas e leis da física simplificados.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture1.png" alt="Conjunto de equações essenciais na física de rochas">
+                <p class="fig-caption">Figura 1: Conjunto de equações essenciais na física de rochas, abrangendo a Equação de Archie para saturação, a Equação de Wyllie para velocidade, a Equação de Kozeny-Carman para permeabilidade e a Equação de Gassmann para substituição de líquidos.</p>
+
+                <p>Para estimar a porosidade (&phi;), três das equações mais essenciais são:</p>
+
+                <ul>
+                    <li>
+                        <p><strong>Equação de Densidade:</strong> Essa pode ser a conexão mais direta. É fundamentado em um balanço de massa, considerando que a densidade total da formação (&rho;<sub>b</sub>) representa uma média ponderada pela porosidade das densidades da matriz rochosa (&rho;<sub>ma</sub>) e do fluido nos poros (&rho;<sub>fl</sub>). A porosidade pode ser determinada da seguinte forma:</p>
+
+                        $$\phi = \frac{\rho_{ma} - \rho_{b}}{\rho_{ma} - \rho_{fl}}$$
+
+                        <p>Onde &rho;<sub>ma</sub> e &rho;<sub>fl</sub> são parâmetros que devem ser considerados com base no entendimento da litologia e do tipo de fluido.</p>
+                    </li>
+
+                    <li>
+                        <p><strong>Equação do Tempo de Trânsito de Wyllie:</strong> Esta fórmula, sugerida por Wyllie, Gregory e Gardner (1956) [6] associam o tempo de trânsito da onda sónica registrado na formação ($\mathrm{\Delta}t$) e no tempo de trânsito na matriz (${\mathrm{\Delta}t}_{ma}$) e no fluido (${\mathrm{\Delta}t}_{fl}$). A porosidade é definida por:</p>
+
+                        $$\phi = \frac{\mathrm{\Delta}t - {\mathrm{\Delta}t}_{ma}}{{\mathrm{\Delta}t}_{fl} - {\mathrm{\Delta}t}_{ma}}$$
+
+                        <p>Esta equação funciona bem em formações consolidadas e com porosidade intergranular, mas é notoriamente imprecisa em rochas com fraturas ou porosidade secundária.</p>
+                    </li>
+
+                    <li>
+                        <p><strong>Equação de Gardner:</strong> Sugerida por Gardner, Gardner e Gregory (1974) [7], essa equação empírica estabelece uma relação entre a densidade da formação ($\rho_{b}$) e a velocidade da onda compressional ($V_{\rho}$), que corresponde ao inverso do tempo de trânsito ($\mathrm{\Delta}t$). A fórmula é:</p>
+
+                        $$\rho_{b} = {aV}_{p}^{b}$$
+
+                        <p>Onde $a$ e $b$ são constantes empíricas. Apesar de não calcular a porosidade de forma direta, é fundamental para estabelecer a relação entre as medições de densidade e sónicas.</p>
+                    </li>
+                </ul>
+
+                <p>A principal restrição dessas equações está em sua simplicidade. Elas adotam uma matriz rochosa homogénea e parâmetros constantes (&rho;<sub>ma</sub>, ${\mathrm{\Delta}t}_{ma}$), algo que raramente ocorre na realidade geológica.</p>
+
+                <p>A complexidade das litologias mistas, a existência de diversos tipos de argila (como o folhelho) e a variação na compactação e cimentação da rocha geram não-linearidades que essas equações simples não são capazes de representar. É precisamente esta lacuna que as abordagens de Deep Learning e PINN buscam preencher.</p>
+
+                <!-- Estrutura das Redes Neurais -->
+                <h3>Estrutura das Redes Neurais e Formulação PINN</h3>
+
+                <p>As Redes Neurais Artificiais (NN), como aproximadoras universais de funções, proporcionam uma opção robusta em comparação com os modelos físicos convencionais. Baseadas na arquitetura do cérebro humano, as redes neurais são formadas por camadas de "neurónios" interligados, capazes de aprender relações altamente complexas e não lineares diretamente dos dados, sem precisar que lhes seja oferecida uma equação direta. Essa habilidade as torna especialmente aprópriadas para questões de geociências, em que as relações subjacentes são frequentemente muito complexas para serem representadas por fórmulas simples.</p>
+
+                <p>Uma rede neural aprende por meio de um processo denominado treinamento. Ao longo do treinamento, a rede analisa uma quantidade significativa de exemplos de entrada (como perfis de GR, RHOB, DT, ILD) e suas respectivas saídas (como a porosidade medida). A rede ajusta os pesos das conexões entre seus neurónios de forma iterativa para reduzir a diferença entre os valores preditivos e os valores reais. Esse processo de otimização, normalmente executado por meio de um algoritmo como o Adam, possibilita que a rede crie um modelo interno extremamente preciso do sistema que está analisando.</p>
+
+                <p>No contexto das PINNs, a estrutura da rede neural é expandida para incluir as restrições físicas. A figura a seguir representa uma arquitetura PINN padrão para usos petrofísicos.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture2.png" alt="Representação técnica da arquitetura PINN para a integração petrofísica">
+                <p class="fig-caption">Figura 2: Representação técnica da arquitetura PINN para a integração petrofísica. Uma rede neural é alimentada pelos dados de entrada, e suas saídas são limitadas por equações físicas, como a Lei de Darcy e a Lei de Archie, que são integradas diretamente na função de perda da rede.</p>
+
+                <p>Em nossa pesquisa, a arquitetura da rede neural para o poço Euler foi composta por uma rede densa com quatro camadas ocultas (128, 64, 32 e 16 neurónios, respectivamente) e uma camada de saída com um único neurónio para prever a porosidade (NPHI). Nas camadas ocultas, empregou-se a função de ativação Sigmoid, e o otimizador Adam foi utilizado para o treinamento.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture3.png" alt="Estrutura da rede neural empregada para o poço de Euler">
+                <p class="fig-caption">Figura 3: Estrutura da rede neural empregada para o poço de Euler. As quatro características de entrada são processadas por quatro camadas ocultas para gerar a predição de porosidade. A configuração e os resultados do desempenho (R&sup2;=0,9573) são descritos em detalhes.</p>
+
+                <!-- METODOLOGIA E EXECUCAO -->
+                <h2>Metodologia e Execução</h2>
+
+                <h3>A Representação Matemática das PINNs</h3>
+
+                <p>A principal inovação das PINNs está em sua função de perda híbrida. Em uma rede neural tradicional, o objetivo é minimizar uma função de perda que avalia a diferença entre as predições do modelo e os dados de treinamento reais (L<sub>dados</sub>). Em PINNs, a função de perda é ampliada por um segundo termo, L<sub>fisica</sub>, que mede o resíduo das equações diferenciais parciais (EDPs) que controlam o sistema. A função de perda total, L, é uma soma ponderada desses dois componentes:</p>
+
+                $$L(\theta) = L_{dados}(\theta) + \lambda L_{fisica}(\theta)$$
+
+                <p>Onde:</p>
+                <ul>
+                    <li>&theta; são os parâmetros da rede (os pesos e bias das camadas).</li>
+                    <li>$L_{dados}$ é a função de perda clássica dos dados (por exemplo, Mean Squared Error, MSE):
+
+                        $$L_{dados}(\theta) = \frac{1}{N}\sum_{i = 1}^{N}\left( y_{i}^{pred}(\theta) - y_{i}^{obs} \right)^{2}$$
+
+                        Com: $y_{i}^{obs}$ sendo a porosidade observada e $y_{i}^{pred}(\theta)$ a previsão da rede.
+                    </li>
+                    <li>$L_{fisica}$ é o resíduo da equação diferencial parcial (EDP) que descreve a física do sistema. Para a análise de petrofísica, a equação de Densidade foi usada e o $L_{fisica}$ foi estabelecida como:
+
+                        $$L_{fisica}(\theta) = \frac{1}{M}\sum_{j = 1}^{M}\left( \phi_{NN,j}(\theta) - \frac{\rho_{ma} - {\rho_{b}}_{j}}{\rho_{ma} - \rho_{fl}} \right)^{2}$$
+
+                        Onde $\phi_{NN,j}(\theta)$ é a porosidade prevista pela rede neural no ponto $j$, e a fração é a porosidade "física" calculada pela Equação de Densidade. O &lambda; é o hiperparâmetro de balanceamento, que especifica a importância relativa da informação física em relação a informação dos dados. A seleção correta de &lambda; é crítica: valores muito baixos implicam que a rede ignora a física, enquanto valores muito elevados podem levar a uma sobre-restrição, dificultando a aprendizagem dos dados.
+                    </li>
+                </ul>
+
+                <!-- Desenvolvimento Experimental -->
+                <h3>Desenvolvimento Experimental</h3>
+
+                <p>Para examinar empiricamente o valor das PINNs, foi criado um teste controlado rigoroso. Os dados foram adquiridos do Poço Euler, situado no Campo EDP, em um reservatório de turbiditos da Bacia do Congo, em Angola. Este reservatório geológico é caracterizado por arenitos de quartzo e feldspato intercalados com folhelhos, com uma porosidade que varia entre 5% e 35% (v/v). Os dados obtidos incluíam perfis contínuos de:</p>
+
+                <ul>
+                    <li><strong>GR (Raios Gama)</strong> - métrica da argilosidade.</li>
+                    <li><strong>RHOB (Densidade da Formação)</strong> - medição direta da densidade da rocha.</li>
+                    <li><strong>DT (Tempo de Trânsito Sónico)</strong> - inverso da velocidade da onda compressional.</li>
+                    <li><strong>ILD (Resistividade Profunda)</strong> - medição da resistividade da formação.</li>
+                    <li><strong>NPHI (Porosidade Neutrónica)</strong> - alvo de predição.</li>
+                </ul>
+
+                <p>Um componente crucial do rigor metodológico foi a divisão dos dados de forma tridimensional:</p>
+                <ul>
+                    <li><strong>Conjunto de Treinamento (70%):</strong> Empregado para otimizar os parâmetros da rede neural por meio do processo de minimização da função de perda.</li>
+                    <li><strong>Conjunto de Validação (15%):</strong> Usado para realizar a seleção de hiperparâmetros e monitorar o overfitting de maneira independente ao longo do processo de treinamento.</li>
+                    <li><strong>Conjunto de Teste (15%):</strong> Um conjunto de dados completamente cego, utilizado somente ao final para avaliar a performance de generalização final.</li>
+                </ul>
+
+                <p>Essa divisão fez-se de forma estratificada, garantindo uma distribuição equilibrada de porosidade e litologia entre os três grupos.</p>
+
+                <!-- Arquiteturas Testadas -->
+                <h3>Arquiteturas Testadas</h3>
+
+                <p>Três configurações de rede foram minuciosamente testadas:</p>
+                <ul>
+                    <li><strong>Modelo de Física Pura:</strong> Aplicação direta da Equação da Densidade (sem rede neural), servindo como uma referência essencial para mostrar o limite superior de desempenho de um modelo físico simples.</li>
+                    <li><strong>Modelo de Rede Neural Pura (NN):</strong> Uma rede densa profunda, orientada por dados, sem restrições físicas, incluindo quatro camadas ocultas (128, 64, 32, 16 neurónios), ativações Sigmoid e um único neurónio de saída.</li>
+                    <li><strong>Modelo PINN (Physics-Informed Neural Network):</strong> A mesma estrutura da NN Pura, porém com a função de perda acrescida do termo $L_{fisica}$ (Equação da Densidade).</li>
+                </ul>
+
+                <!-- Detalhes de Treinamento -->
+                <h3>Detalhes de Treinamento</h3>
+
+                <p>Para alcançar justiça experimental, todos os modelos foram treinados empregando condições similares:</p>
+                <ul>
+                    <li><strong>Otimizador:</strong> Adam, com taxa de aprendizado inicial de 0,001 e agendamento dinâmico (redução da taxa de aprendizado com base em um plato na validação).</li>
+                    <li><strong>Critério de Parada (Early Stopping):</strong> Interrupção do treinamento se a perda de validação não melhorar por 25 épocas.</li>
+                    <li><strong>Épocas Máximas:</strong> Foram estipuladas 500 épocas para garantir a convergência adequada.</li>
+                    <li><strong>Regularização:</strong> Dropout (25%) foi utilizado nas camadas densas para minimizar o overfitting.</li>
+                    <li><strong>Normalização:</strong> As entradas foram padronizadas (média zero, desvio padrão unitário) e as saídas foram normalizadas no intervalo [0, 1].</li>
+                </ul>
+
+                <p>Cada modelo foi executado com três inicializações aleatórias diferentes, e os resultados foram calculados em média para diminuir o impacto de qualquer variabilidade devido a inicialização dos pesos.</p>
+
+                <!-- RESULTADOS E ANALISE -->
+                <h2>Resultados e Análise</h2>
+
+                <h3>Desempenho no Conjunto de Teste: Uma Comparação Quantitativa</h3>
+
+                <p>Ao final do treinamento e da validação, a performance de cada método foi mensurada no conjunto de teste independente.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture4.jpg" alt="Tabela comparativa de desempenho dos modelos">
+                <p class="fig-caption">Figura 4: Tabela comparativa. O modelo NN Pura destacou-se nos principais indicadores (MSE, MAE, e R&sup2;). A Física Pura ofereceu resultados moderados. A PINN, surpreendentemente, teve um desempenho abaixo da expectativa.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture5.png" alt="Gráfico de dispersão do modelo de Física Pura">
+                <p class="fig-caption">Figura 5: Gráfico de dispersão do modelo de Física Pura (Equação da Densidade). Visível dispersão em torno da linha de identidade, especialmente em zonas de altas porosidades. O R&sup2; de 0,8546 reflete a limitação deste modelo simples.</p>
+
+                <p>O Modelo de Física Pura (Densidade) estabelece um ponto de referência confiável. Com um R&sup2; de 0,8546, a equação de densidade exibe uma relação física sólida, porém limitada. A dispersão crescente em porosidades elevadas (&phi; &gt; 0,30) reflete o fato de que a realidade geológica é mais intrincada do que o modelo simplificado de duas componentes (matriz + fluido). Em zonas com mistura litológica ou argilas distribuídas, a suposição de uma &rho;<sub>ma</sub> constante falha.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture6.png" alt="Gráfico de dispersão do modelo NN Pura">
+                <p class="fig-caption">Figura 6: Gráfico de dispersão do modelo NN Pura. Ajuste quase perfeito a linha de identidade, ilustrando uma capacidade de aprendizado profunda e não linear das complexas correlações ocultas nos dados.</p>
+
+                <p>A Rede Neural Pura superou de forma notável. Com um R&sup2; de 0,9573, a NN Pura exibiu uma habilidade marcante de compreender as não-linearidades ocultas nos dados. Ela aprendeu não apenas a correlação direta da densidade, mas também os efeitos combinados da litologia (através do GR), do tempo de trânsito sónico (DT), e da resistividade (ILD). O RMSE de 0,0267 v/v é significativamente menor do que a Física Pura (0,0525 v/v), mostrando que o modelo é adequado para ser empregado em previsões de engenharia em larga escala.</p>
+
+                <p>A descoberta mais inesperada foi o desempenho da PINN. Ao invés de combinar as vantagens da física e dos dados, a PINN obteve um R&sup2; de 0,8883, ficando entre a Física Pura e a NN Pura. Este resultado conflita com o paradigma comumente aceito de que "incluir física deve auxiliar".</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture7.png" alt="Gráfico de dispersão do modelo PINN">
+                <p class="fig-caption">Figura 7: Gráfico de dispersão do modelo PINN. Um desempenho intermediário surpreendente, que inicialmente insinua uma 'combinação'. Porém, uma análise detalhada revela que a PINN estava lutando contra uma física inadequada.</p>
+
+                <!-- O Paradoxo da PINN -->
+                <h3>O Paradoxo da PINN: Onde a Física se Torna Uma Restrição Prejudicial</h3>
+
+                <p>Uma investigação mais profunda da performance da PINN revelou uma dinâmica surpreendente: a PINN não estava utilizando a física de forma eficaz, mas sim a estava combatendo.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture8.png" alt="Diagrama de influência de cada componente da perda sobre a PINN">
+                <p class="fig-caption">Figura 8: Diagrama de influência de cada componente da perda sobre a PINN. A Física está puxando a rede para a simplicidade, e os Dados estão puxando-a para a complexidade. Quando a física está incorreta, ela se transforma numa restrição que prejudica.</p>
+
+                <p>Para compreender o que ocorreu, é necessário analisar a função de perda total da PINN:</p>
+
+                $$L_{total}(\theta) = L_{dados}(\theta) + \lambda L_{fisica}(\theta)$$
+
+                <p>A primeira vista, este parece ser uma excelente adição: a PINN tem dois professores. Em primeiro lugar, os dados informam o que a natureza de fato fez; em segundo lugar, a física informa o que a natureza deve fazer. O equilíbrio entre esses dois professores é estabelecido pelo hiperparâmetro &lambda;.</p>
+
+                <p>Contudo, o que acontece quando a física está errada ou excessivamente simplificada? Isto é exatamente o que ocorreu com o uso da Equação de Densidade, que supõe uma matriz homogénea e parâmetros fixos (&rho;<sub>ma</sub>, &rho;<sub>fl</sub>). Na verdade, o reservatório de turbidito é heterogéneo, contendo zonas com concentrações variadas de argila e porosidade secundária.</p>
+
+                <p>O efeito? A PINN foi instruída pela física a prever de forma consistente com uma lei excessivamente simplificada, ao mesmo tempo que os dados "diziam" a rede que havia padrões mais intrincados. Como resultado, a rede ficou com um dilema de aprendizado:</p>
+
+                <p><strong>Cenário 1:</strong> Se a PINN desse ênfase a física (&lambda; alto), ela estaria reduzindo L<sub>fisica</sub>, mas pagando um preço alto em $L_{dados}$ (pois a física estava inacurada).</p>
+                <p><strong>Cenário 2:</strong> Se a PINN desse ênfase aos dados (&lambda; baixo), ela estaria essencialmente se convertendo numa NN Pura, perdendo o suposto benefício da informação física.</p>
+
+                <p>Em essência, a PINN implicitamente "conhece" que a física fornecida é imprecisa e, de forma notável, aprendeu a mitigar sua influência, atribuindo mais atenção aos dados.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture9.png" alt="Curvas de perda ao longo de épocas durante o treinamento">
+                <p class="fig-caption">Figura 9: Curvas de perda ao longo de épocas durante o treinamento. Observe que a PINN rapidamente reduz a L<sub>dados</sub>, ao mesmo tempo em que permite que a L<sub>fisica</sub> se mantenha elevada. Isso mostra que a rede 'decidiu' ignorar parcialmente a física.</p>
+
+                <p>A figura acima ilustra uma realidade inesperada. Mesmo que a perda total (L<sub>total</sub>) da PINN diminua ao longo do treinamento, a perda da física (L<sub>fisica</sub>) não diminuiu muito, e mesmo aumentou um pouco. Em contrapartida, a perda dos dados (L<sub>dados</sub>) diminuiu rapidamente. A rede tomou uma "decisão" implícita: <em>Como a restrição da física está me impedindo de ajustar bem aos dados, vou dar prioridade ao ajuste dos dados e tolerar o custo de violar a restrição da física.</em></p>
+
+                <p>Este é um fenómeno surpreendente e teoricamente fundamental. A rede foi mais inteligente do que nos. A rede efetivamente aprendeu a executar a crítica científica: ela identificou que a equação da densidade simplificada não é uma lei suficientemente robusta neste ambiente e escolheu desconsidera-la para aumentar sua capacidade de se ajustar as observações.</p>
+
+                <!-- Análise de Sensibilidade -->
+                <h3>Análise de Sensibilidade ao Hiperparâmetro &lambda;</h3>
+
+                <p>Para esclarecer ainda mais a interação entre dados e física, foi feito um experimento de varredura do hiperparâmetro &lambda;. O modelo PINN foi treinado usando valores de &lambda; que variaram de 0,01 a 100.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture10.png" alt="Análise de sensibilidade ao hiperparâmetro lambda">
+                <p class="fig-caption">Figura 10: Análise de sensibilidade ao hiperparâmetro &lambda;. Em &lambda; = 0,01, a PINN atua quase como uma NN Pura (R&sup2; alto). Conforme &lambda; cresce, a performance se deteriora, mostrando que a física imposta é prejudicial.</p>
+
+                <p>Os resultados mostram uma tendência clara:</p>
+                <ul>
+                    <li><strong>Valores baixos de &lambda; (0,01 - 0,1):</strong> A PINN atuou de forma quase semelhante a NN Pura, com R&sup2; próximo a 0,95 e RMSE baixo.</li>
+                    <li><strong>Valores intermediários de &lambda; (1 - 10):</strong> A performance foi gradualmente reduzida.</li>
+                    <li><strong>Valores elevados de &lambda; (50 - 100):</strong> O modelo PINN se deteriorou severamente, com R&sup2; caindo para 0,87.</li>
+                </ul>
+
+                <p>Esta análise experimental evidencia um insight crítico: A física pode ser uma ajuda excelente, mas somente quando ela é precisa e representa o sistema com fidelidade. A inclusão da física em PINNs não é automaticamente benéfica.</p>
+
+                <!-- ALEM DA METRICA -->
+                <h2>Além da Métrica: Interpretabilidade e Explicabilidade</h2>
+
+                <h3>A Maldição da Caixa-Preta das Redes Neurais</h3>
+
+                <p>Uma das críticas mais recorrentes ao Deep Learning é que estes modelos funcionam como caixas-pretas. Para enfrentar esse desafio, foram aplicadas técnicas de Explainable AI (XAI) para examinar a importância das variáveis e entender o comportamento da rede.</p>
+
+                <h3>Análise de Importância de Características com SHAP</h3>
+
+                <p>SHAP é uma estrutura fundamentada na teoria dos jogos cooperativos que quantifica a contribuição marginal de cada variável para cada predição individual [9].</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture12.png" alt="Gráfico de importância SHAP">
+                <p class="fig-caption">Figura 12: Gráfico de importância SHAP. RHOB (Densidade) é o fator dominante. A importância de GR e DT é menor, mas ainda relevante. ILD (Resistividade) apresenta influência marginal.</p>
+
+                <p>As descobertas deste gráfico SHAP são extremamente reveladoras:</p>
+                <ul>
+                    <li><strong>RHOB (Densidade)</strong> é de longe o fator mais importante. Isto confirma a validade física fundamental da Equação de Densidade.</li>
+                    <li><strong>GR (Raios Gama)</strong> aparece como a segunda variável mais importante. O GR é uma medição proxy para argilosidade.</li>
+                    <li><strong>DT (Tempo de Trânsito Sónico)</strong> é moderadamente importante.</li>
+                    <li><strong>ILD (Resistividade)</strong> tem um impacto marginal.</li>
+                </ul>
+
+                <!-- Análise de Correlação -->
+                <h3>Análise de Correlação e Heatmap</h3>
+
+                <img src="../images/blog/pinns-petrofisica/Picture13.png" alt="Heatmap da matriz de correlação">
+                <p class="fig-caption">Figura 13: Heatmap da matriz de correlação. Confirma a correlação negativa forte entre RHOB e NPHI.</p>
+
+                <p>A matriz de correlação mostra que:</p>
+                <ul>
+                    <li><strong>RHOB</strong> possui uma correlação negativa forte com NPHI (r ~ -0,92).</li>
+                    <li><strong>DT</strong> possui uma correlação positiva moderada com NPHI (r ~ +0,76).</li>
+                    <li><strong>GR</strong> tem uma correlação negativa fraca com NPHI (r ~ -0,42).</li>
+                    <li><strong>ILD</strong> possui correlação fraca com NPHI.</li>
+                </ul>
+
+                <!-- Curvas de Aprendizagem -->
+                <h3>Curvas de Aprendizagem</h3>
+
+                <img src="../images/blog/pinns-petrofisica/Picture14.png" alt="Curvas de aprendizagem do modelo NN Pura">
+                <p class="fig-caption">Figura 14: Curvas de aprendizagem do modelo NN Pura. Convergência suave sem sinais de overfitting.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture15.png" alt="Curvas de aprendizagem do modelo PINN">
+                <p class="fig-caption">Figura 15: Curvas de aprendizagem do modelo PINN. A perda da física permanece elevada mesmo quando a perda dos dados diminui, indicando conflito entre as duas perdas.</p>
+
+                <!-- DEBATE E APLICACOES PRATICAS -->
+                <h2>Debate e Aplicações Práticas</h2>
+
+                <h3>Uma Heurística para a Seleção de Modelos</h3>
+
+                <p>Com base nas lições aprendidas, foi criada uma árvore de decisão heurística para orientar a escolha do método de modelação mais adequado (Física Pura, NN Pura ou PINN).</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture16.png" alt="Árvore de decisão para escolha do método de modelação">
+                <p class="fig-caption">Figura 16: Árvore de decisão que sugere uma heurística para escolher o método de modelação mais apropriado.</p>
+
+                <!-- Lições Aprendidas -->
+                <h3>Lições Aprendidas</h3>
+
+                <ul>
+                    <li><strong>A Qualidade dos Dados Prevalece sobre a Quantidade.</strong></li>
+                    <li><strong>A Densidade (RHOB) é a Variável Crítica.</strong></li>
+                    <li><strong>Física Inadequada é Prejudicial.</strong></li>
+                    <li><strong>NN Pura Pode Superar PINNs em situações com dados de alta qualidade.</strong></li>
+                </ul>
+
+                <!-- Aplicações Práticas -->
+                <h3>Aplicações Práticas</h3>
+
+                <p>Reavaliação de Campos Maduros, Otimização de Custos, Controlo de Qualidade em Tempo Real, Aprimoramento dos Modelos de Reservatório.</p>
+
+                <img src="../images/blog/pinns-petrofisica/Picture17.jpg" alt="Infográfico sintetizando o estudo">
+                <p class="fig-caption">Figura 17: Infográfico que sintetiza os dados coletados, os métodos experimentados, as principais descobertas, recomendações práticas e conclusão final do estudo.</p>
+
+                <!-- CONCLUSOES E PERSPECTIVAS FUTURAS -->
+                <h2>Conclusões e Perspectivas Futuras</h2>
+
+                <p><strong>Sumário Executivo:</strong> Este estudo ofereceu uma análise comparativa detalhada de três paradigmas de modelagem para prever a porosidade petrofísica.</p>
+
+                <p>A principal conclusão deste estudo é que, quando se dispõem de dados de alta qualidade, uma abordagem de Deep Learning puramente orientada a dados pode superar tanto os modelos tradicionais de física de rocha quanto as abordagens híbridas, como as PINNs, especialmente quando o modelo físico explícito simplifica a realidade. Ao aprender a ignorar o constrangimento físico prejudicial, a PINN exibiu uma habilidade impressionante de "auto-diagnóstico".</p>
+
+                <p><strong>Limitações Reconhecidas:</strong></p>
+                <ul>
+                    <li><strong>Generalização Litológica:</strong> O modelo foi treinado unicamente em arenitos quartzo-feldspáticos provenientes de um ambiente turbidítico.</li>
+                    <li><strong>Intervalo de Dados:</strong> O modelo é considerado confiável dentro do intervalo de valores observado durante o treinamento.</li>
+                    <li><strong>Condições de Poço:</strong> O modelo considera condições de poço perfeitas.</li>
+                </ul>
+
+                <p><strong>Perspectivas para Pesquisas Futuras:</strong> Incorporação de Física Mais Avançada; Quantificação de Incerteza com Redes Neuronais Bayesianas; Automação e AutoML; Integração Multimodal de Dados.</p>
+
+                <!-- REFERENCIAS -->
+                <h2>Referências</h2>
+
+                <ol>
+                    <li>Raissi, M., Perdikaris, P., &amp; Karniadakis, G. E. (2019). Physics-informed neural networks. <em>Journal of Computational Physics</em>, 378, 686-707.</li>
+                    <li>Wang, S., et al. (2023). An Expert's Guide to Training Physics-informed Neural Networks. <em>arXiv:2308.08468</em>.</li>
+                    <li>Li, P., Liu, M., et al. (2024). Probabilistic physics-informed neural network for seismic petrophysical inversion. <em>Geophysics</em>, 89(2).</li>
+                    <li>Han, J. X., et al. (2023). Physics-informed neural network-based petroleum reservoir simulation. <em>Petroleum Science</em>, 20(5).</li>
+                    <li>Shao, R., et al. (2024). Reservoir evaluation using petrophysics informed machine learning. <em>Geoenergy Science and Engineering</em>, 234.</li>
+                    <li>Wyllie, M. R. J., Gregory, A. R., &amp; Gardner, L. W. (1956). Elastic wave velocities in heterogeneous and porous media. <em>Geophysics</em>, 21(1), 41-70.</li>
+                    <li>Gardner, G. H. F., Gardner, L. W., &amp; Gregory, A. R. (1974). Formation velocity and density. <em>Geophysics</em>, 39(6), 770-780.</li>
+                    <li>Mavko, G., Mukerji, T., &amp; Dvorkin, J. (2020). <em>The Rock Physics Handbook</em>. Cambridge University Press.</li>
+                    <li>Cuomo, S., et al. (2022). Scientific machine learning through physics-informed neural networks. <em>Journal of Scientific Computing</em>, 92(3), 88.</li>
+                    <li>Al-Mudhafar, W. J. (2022). A comprehensive review of the application of AI in the oil and gas industry. <em>Journal of Petroleum Exploration and Production Technology</em>, 12(11), 3099-3121.</li>
+                </ol>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <img src="../ICONE CGC.jpg" alt="CGC" class="footer-logo-img">
+                        <span>Copia Group of Companies, SA</span>
+                    </a>
+                    <p data-i18n="footer.desc">Departamento de Pesquisa, Desenvolvimento e Tecnologia. Inovação em petróleo, gás natural e biocombustíveis.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.nav">Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html#sobre" data-i18n="footer.about">Sobre o DPDT</a></li>
+                        <li><a href="../index.html#areas" data-i18n="footer.areas">Áreas de Actuação</a></li>
+                        <li><a href="../index.html#softwares">Softwares</a></li>
+                        <li><a href="../index.html#servicos" data-i18n="footer.services">Serviços</a></li>
+                        <li><a href="../blog.html" data-i18n="footer.blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Softwares</h4>
+                    <ul>
+                        <li><a href="../index.html#softwares">COPIA Seis</a></li>
+                        <li><a href="../index.html#softwares">COPIA DynamicSim</a></li>
+                        <li><a href="../index.html#softwares">COPIA Digital Lab</a></li>
+                        <li><a href="../index.html#softwares">COPIA Colect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.company">Empresa</h4>
+                    <ul>
+                        <li><a href="../index.html#contacto" data-i18n="footer.contact">Contacto</a></li>
+                        <li><a href="https://www.copiagroupofcompanies.com/" target="_blank" rel="noopener">Copia Group</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copy">&copy; 2026 DPDT - Copia Group of Companies, SA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=2"></script>
+</body>
+</html>
