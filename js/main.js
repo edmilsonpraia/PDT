@@ -63,7 +63,7 @@
         if (footer && !footer.querySelector('.sidebar-email')) {
             var emailLink = document.createElement('a');
             emailLink.className = 'sidebar-email';
-            emailLink.href = 'mailto:info@copiagroup.co.mz';
+            emailLink.href = 'mailto:edmilson.praia@cgc-angola.com';
             emailLink.textContent = 'Email';
             footer.insertBefore(emailLink, footer.firstChild);
 
@@ -772,7 +772,7 @@
                 colect: '<b>COPIA Colect</b> — Aplicação PWA para colecta de coordenadas GPS com mapeamento integrado. Precisão métrica, colecta de pontos com legenda/categoria/foto, tracking contínuo de rotas, medição de distâncias e áreas, perfil de elevação, exportação em JSON/GPX/KML, funciona offline.'
             },
             servicos: 'Os nossos 6 serviços:\n\n• <b>Pesquisa & Investigação</b> — Estudos de viabilidade, análise laboratorial\n• <b>Engenharia de Processos</b> — Optimização industrial, simulação, scale-up\n• <b>Soluções Digitais</b> — Software, SCADA, IoT industrial\n• <b>Segurança & Ambiente</b> — Gestão HSE, impacto ambiental\n• <b>Análise de Dados & IA</b> — Data science, modelos preditivos, ML\n• <b>Consultoria Técnica</b> — Assessoria, transferência tecnológica, auditorias',
-            contacto: 'Contacte-nos:\n\n📧 Email: <a href="mailto:dpdt@copiagroupofcompanies.com">dpdt@copiagroupofcompanies.com</a>\n📞 Telefone: +244 942 373 623\n📍 Localização: Luanda, Angola\n\nOu preencha o formulário na secção de contacto do site.',
+            contacto: 'Contacte-nos:\n\n📧 Email: <a href="mailto:edmilson.praia@cgc-angola.com">edmilson.praia@cgc-angola.com</a>\n📞 Telefone: +244 933 51 41 32\n📍 Localização: Luanda, Angola\n\nOu preencha o formulário na secção de contacto do site.',
             blog: 'Temos 3 artigos científicos publicados:\n\n• <a href="blog/pinns-petrofisica.html"><b>PINNs em Petrofísica</b></a> — Deep Learning e equações de rocha para previsão de porosidade\n• <a href="blog/integracao-de-metodos.html"><b>Integração de Métodos e ML</b></a> — Caracterização petrofísica de sistemas fluviais (F1-Score: 0.87)\n• <a href="blog/seismic-ml.html"><b>ML e Atributos Sísmicos</b></a> — Modelagem estrutural 3D automatizada',
             equipa: 'O DPDT conta com investigadores especializados. Edmilson D. Praia é um dos autores principais das nossas publicações científicas, com trabalhos em PINNs, Machine Learning para petrofísica e interpretação sísmica. Cirilo Cauxeiro é co-autor na pesquisa de PINNs em petrofísica.'
         };
