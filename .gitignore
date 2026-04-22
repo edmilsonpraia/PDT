@@ -1,6 +1,5 @@
-# Large media files (GitHub rejects >100MB; host via CDN/YouTube/Vimeo)
+# Original uncompressed media (GitHub rejects >100MB — keep only web-optimised versions)
 Midia/Media1.mp4
-*.mp4
 *.mov
 *.avi
 *.mkv
