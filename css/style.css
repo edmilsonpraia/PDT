@@ -405,26 +405,36 @@ input, select, textarea { font-family: inherit; }
     display: none;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     background: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
+    border-radius: 8px;
+    transition: background var(--t-base);
+}
+.hamburger:hover,
+.hamburger:active {
+    background: rgba(0,0,0,0.06);
+}
+[data-theme="dark"] .hamburger:hover,
+[data-theme="dark"] .hamburger:active {
+    background: rgba(255,255,255,0.08);
 }
 .hamburger__bar {
     display: block;
-    width: 20px;
-    height: 1.5px;
+    width: 24px;
+    height: 2.5px;
     background: var(--text-primary);
-    border-radius: 2px;
+    border-radius: 3px;
     position: absolute;
     transition: all var(--t-slow) ease-in-out;
 }
-.hamburger { position: relative; }
-.hamburger__bar:nth-child(1) { transform: translateY(-6px); }
+.hamburger__bar:nth-child(1) { transform: translateY(-7px); }
 .hamburger__bar:nth-child(2) { transform: translateY(0); }
-.hamburger__bar:nth-child(3) { transform: translateY(6px); }
+.hamburger__bar:nth-child(3) { transform: translateY(7px); }
 /* Hamburger opened → X */
 .hamburger.active .hamburger__bar:nth-child(1) { transform: rotate(45deg); }
 .hamburger.active .hamburger__bar:nth-child(2) { opacity: 0; transform: translateX(-10px); }
@@ -519,7 +529,7 @@ input, select, textarea { font-family: inherit; }
     background-size: cover;
     background-position: center;
     opacity: 0;
-    filter: saturate(0.9) brightness(0.55);
+    filter: saturate(1.05) brightness(0.85);
     animation: hero-slide-cycle 24s infinite;
     will-change: opacity, transform;
 }
@@ -529,8 +539,8 @@ input, select, textarea { font-family: inherit; }
 
 @keyframes hero-slide-cycle {
     0%   { opacity: 0; transform: scale(1.08); }
-    5%   { opacity: 0.6; }
-    30%  { opacity: 0.6; transform: scale(1.0); }
+    5%   { opacity: 0.95; }
+    30%  { opacity: 0.95; transform: scale(1.0); }
     37%  { opacity: 0; transform: scale(1.0); }
     100% { opacity: 0; transform: scale(1.08); }
 }
@@ -542,9 +552,9 @@ input, select, textarea { font-family: inherit; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.45;
+    opacity: 0.85;
     z-index: 1;
-    filter: saturate(1.1) contrast(1.05);
+    filter: saturate(1.15) contrast(1.05) brightness(0.95);
     pointer-events: none;
 }
 
@@ -554,9 +564,9 @@ input, select, textarea { font-family: inherit; }
     inset: 0;
     z-index: 2;
     background:
-        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.18), transparent 60%),
-        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.10), transparent 60%),
-        linear-gradient(160deg, rgba(10,7,4,0.82) 0%, rgba(26,18,9,0.72) 45%, rgba(42,30,18,0.65) 100%);
+        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.20), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.12), transparent 60%),
+        linear-gradient(160deg, rgba(10,7,4,0.55) 0%, rgba(26,18,9,0.42) 45%, rgba(42,30,18,0.35) 100%);
     pointer-events: none;
 }
 .hero-overlay::after {
@@ -578,11 +588,11 @@ input, select, textarea { font-family: inherit; }
 /* Disable video on mobile — save data, slideshow still plays */
 @media (max-width: 768px) {
     .hero-video { display: none; }
-    .hero-slide { filter: saturate(0.85) brightness(0.5); }
+    .hero-slide { filter: saturate(1.0) brightness(0.8); }
     .hero-overlay {
         background:
-            radial-gradient(ellipse 500px 400px at 50% 30%, rgba(196,152,42,0.15), transparent 60%),
-            linear-gradient(160deg, rgba(10,7,4,0.88) 0%, rgba(26,18,9,0.80) 100%);
+            radial-gradient(ellipse 500px 400px at 50% 30%, rgba(196,152,42,0.18), transparent 60%),
+            linear-gradient(160deg, rgba(10,7,4,0.62) 0%, rgba(26,18,9,0.50) 100%);
     }
 }
 
@@ -597,14 +607,14 @@ input, select, textarea { font-family: inherit; }
     .hero-video { display: none; }
 }
 
-/* Dark mode — deeper overlay */
+/* Dark mode — still lets background show, just slightly deeper */
 [data-theme="dark"] .hero-overlay {
     background:
-        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.14), transparent 60%),
-        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.07), transparent 60%),
-        linear-gradient(160deg, rgba(5,3,2,0.90) 0%, rgba(15,10,6,0.84) 45%, rgba(22,15,9,0.80) 100%);
+        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.16), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.09), transparent 60%),
+        linear-gradient(160deg, rgba(5,3,2,0.68) 0%, rgba(15,10,6,0.55) 45%, rgba(22,15,9,0.48) 100%);
 }
-[data-theme="dark"] .hero-slide { filter: saturate(0.85) brightness(0.45); }
+[data-theme="dark"] .hero-slide { filter: saturate(1.0) brightness(0.75); }
 .hero-title {
     font-size: clamp(2.75rem, 5.5vw, 4rem);
     font-weight: 800;
@@ -612,14 +622,16 @@ input, select, textarea { font-family: inherit; }
     line-height: 1.1;
     margin-bottom: var(--sp24);
     letter-spacing: -1px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4);
 }
 .hero-description {
     font-size: 1.05rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.85);
     max-width: 640px;
     margin: 0 auto var(--sp40);
     line-height: 1.8;
     font-weight: 400;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.4);
 }
 .hero-actions {
     display: flex;
@@ -1522,7 +1534,7 @@ input, select, textarea { font-family: inherit; }
 .section-cta {
     padding: var(--sp80) 0;
     background:
-        linear-gradient(160deg, rgba(15,10,6,0.88) 0%, rgba(26,18,9,0.80) 45%, rgba(42,30,18,0.72) 100%),
+        linear-gradient(160deg, rgba(15,10,6,0.62) 0%, rgba(26,18,9,0.52) 45%, rgba(42,30,18,0.45) 100%),
         url('../Midia/2.png') center / cover no-repeat fixed,
         #0f0a06;
     text-align: center;
@@ -1548,10 +1560,10 @@ input, select, textarea { font-family: inherit; }
 }
 .section-cta .container { position: relative; z-index: 1; }
 
-/* === Section Backgrounds — Light Sections with Subtle Image === */
+/* === Section Backgrounds — Light Sections with Visible Image === */
 #areas.section-light {
     background:
-        linear-gradient(180deg, rgba(250,247,242,0.95) 0%, rgba(250,247,242,0.97) 50%, rgba(250,247,242,0.95) 100%),
+        linear-gradient(180deg, rgba(250,247,242,0.82) 0%, rgba(250,247,242,0.88) 50%, rgba(250,247,242,0.82) 100%),
         url('../Midia/3.png') center / cover no-repeat fixed,
         var(--bg-main);
     position: relative;
@@ -1560,14 +1572,14 @@ input, select, textarea { font-family: inherit; }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 700px 500px at 50% 0%, rgba(196,152,42,0.05), transparent 70%);
+    background: radial-gradient(ellipse 700px 500px at 50% 0%, rgba(196,152,42,0.08), transparent 70%);
     pointer-events: none;
 }
 #areas.section-light > .container { position: relative; z-index: 1; }
 
 #softwares.section-white {
     background:
-        linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.98) 50%, rgba(255,255,255,0.96) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.90) 50%, rgba(255,255,255,0.85) 100%),
         url('../Midia/1.png') center / cover no-repeat fixed,
         var(--bg-surface);
     position: relative;
@@ -1576,29 +1588,29 @@ input, select, textarea { font-family: inherit; }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 700px 500px at 50% 100%, rgba(196,152,42,0.05), transparent 70%);
+    background: radial-gradient(ellipse 700px 500px at 50% 100%, rgba(196,152,42,0.08), transparent 70%);
     pointer-events: none;
 }
 #softwares.section-white > .container { position: relative; z-index: 1; }
 
-/* Dark mode adjustments for light sections with images */
+/* Dark mode adjustments — still lets image show, slightly deeper */
 [data-theme="dark"] #areas.section-light {
     background:
-        linear-gradient(180deg, rgba(10,7,5,0.88) 0%, rgba(15,10,6,0.92) 50%, rgba(10,7,5,0.88) 100%),
+        linear-gradient(180deg, rgba(10,7,5,0.70) 0%, rgba(15,10,6,0.76) 50%, rgba(10,7,5,0.70) 100%),
         url('../Midia/3.png') center / cover no-repeat fixed,
         #0a0705;
 }
 [data-theme="dark"] #softwares.section-white {
     background:
-        linear-gradient(180deg, rgba(10,7,5,0.90) 0%, rgba(15,10,6,0.94) 50%, rgba(10,7,5,0.90) 100%),
+        linear-gradient(180deg, rgba(10,7,5,0.72) 0%, rgba(15,10,6,0.78) 50%, rgba(10,7,5,0.72) 100%),
         url('../Midia/1.png') center / cover no-repeat fixed,
         #0a0705;
 }
 
-/* Dark mode CTA — deeper overlay on top of image */
+/* Dark mode CTA — lighter overlay than before */
 [data-theme="dark"] .section-cta {
     background:
-        linear-gradient(160deg, rgba(5,3,2,0.92) 0%, rgba(15,10,6,0.85) 45%, rgba(22,15,9,0.80) 100%),
+        linear-gradient(160deg, rgba(5,3,2,0.72) 0%, rgba(15,10,6,0.62) 45%, rgba(22,15,9,0.55) 100%),
         url('../Midia/2.png') center / cover no-repeat fixed,
         #0a0705;
 }
@@ -1620,13 +1632,15 @@ input, select, textarea { font-family: inherit; }
     color: var(--white);
     margin-bottom: var(--sp16);
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4);
 }
 .section-cta p {
     font-size: 0.95rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85);
     max-width: 520px;
     margin: 0 auto var(--sp32);
     line-height: 1.7;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.4);
 }
 .cta-actions {
     display: flex;
