@@ -2079,7 +2079,27 @@ input, select, textarea { font-family: inherit; }
 
     .footer-grid { grid-template-columns: 1fr; gap: var(--sp24); }
 
-    .logo-text { font-size: 0.78rem; }
+    /* Compact header so hamburger fits without clipping */
+    .header .container { padding: 0 14px; }
+    .header__content { gap: 10px; }
+    .header__right { gap: 6px; }
+    .logo { gap: 8px; min-width: 0; flex: 1 1 auto; }
+    .logo-img { width: 30px; height: 30px; flex-shrink: 0; }
+    .logo-text {
+        font-size: 0.72rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+    .hamburger { width: 44px; height: 44px; }
+    .hamburger svg { width: 24px; height: 24px; }
+}
+
+@media (max-width: 420px) {
+    .logo-text { font-size: 0.68rem; }
+    .lang-toggle span { display: none; }
+    .lang-toggle { padding: 0 6px; min-width: 30px; }
 }
 
 /* ========================================
