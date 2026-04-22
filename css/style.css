@@ -161,8 +161,7 @@
 [data-theme="dark"] .footer { background: #0c0c0c; }
 [data-theme="dark"] .footer a:hover { color: var(--gold); }
 
-/* CTA section */
-[data-theme="dark"] .section-cta { background: linear-gradient(160deg, #0a0705 0%, #1a1209 50%, #0f0a06 100%); }
+/* CTA section — dark text colors (background handled with image near .section-cta definition) */
 [data-theme="dark"] .section-cta h2 { color: #ffffff; }
 [data-theme="dark"] .section-cta p { color: rgba(255,255,255,0.5); }
 
@@ -504,28 +503,108 @@ input, select, textarea { font-family: inherit; }
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg, #0f0a06 0%, #1a1209 30%, var(--brown-800) 60%, var(--brown-600) 100%);
+    overflow: hidden;
+    isolation: isolate;
 }
-.hero-bg::before {
-    content: '';
+
+/* Image slideshow (always visible — fallback + mobile) */
+.hero-slideshow {
     position: absolute;
     inset: 0;
+    z-index: 0;
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    filter: saturate(0.9) brightness(0.55);
+    animation: hero-slide-cycle 24s infinite;
+    will-change: opacity, transform;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 8s; }
+.hero-slide:nth-child(3) { animation-delay: 16s; }
+
+@keyframes hero-slide-cycle {
+    0%   { opacity: 0; transform: scale(1.08); }
+    5%   { opacity: 0.6; }
+    30%  { opacity: 0.6; transform: scale(1.0); }
+    37%  { opacity: 0; transform: scale(1.0); }
+    100% { opacity: 0; transform: scale(1.08); }
+}
+
+/* Video overlay (desktop only — loads on top of slideshow) */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    z-index: 1;
+    filter: saturate(1.1) contrast(1.05);
+    pointer-events: none;
+}
+
+/* Dark gradient + gold accents + dot pattern for readability */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     background:
-        radial-gradient(ellipse 600px 600px at 70% 20%, rgba(196,152,42,0.12), transparent),
-        radial-gradient(ellipse 500px 500px at 20% 80%, rgba(196,152,42,0.06), transparent);
+        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.18), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.10), transparent 60%),
+        linear-gradient(160deg, rgba(10,7,4,0.82) 0%, rgba(26,18,9,0.72) 45%, rgba(42,30,18,0.65) 100%);
+    pointer-events: none;
 }
-.hero-bg::after {
+.hero-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
     background-size: 40px 40px;
+    opacity: 0.8;
 }
+
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     padding: calc(var(--header-h) + 80px) var(--sp24) var(--sp80);
     max-width: 860px;
 }
+
+/* Disable video on mobile — save data, slideshow still plays */
+@media (max-width: 768px) {
+    .hero-video { display: none; }
+    .hero-slide { filter: saturate(0.85) brightness(0.5); }
+    .hero-overlay {
+        background:
+            radial-gradient(ellipse 500px 400px at 50% 30%, rgba(196,152,42,0.15), transparent 60%),
+            linear-gradient(160deg, rgba(10,7,4,0.88) 0%, rgba(26,18,9,0.80) 100%);
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+        animation: none;
+        opacity: 0.5;
+    }
+    .hero-slide:nth-child(2),
+    .hero-slide:nth-child(3) { display: none; }
+    .hero-video { display: none; }
+}
+
+/* Dark mode — deeper overlay */
+[data-theme="dark"] .hero-overlay {
+    background:
+        radial-gradient(ellipse 800px 600px at 70% 20%, rgba(196,152,42,0.14), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 20% 80%, rgba(196,152,42,0.07), transparent 60%),
+        linear-gradient(160deg, rgba(5,3,2,0.90) 0%, rgba(15,10,6,0.84) 45%, rgba(22,15,9,0.80) 100%);
+}
+[data-theme="dark"] .hero-slide { filter: saturate(0.85) brightness(0.45); }
 .hero-title {
     font-size: clamp(2.75rem, 5.5vw, 4rem);
     font-weight: 800;
@@ -1442,7 +1521,10 @@ input, select, textarea { font-family: inherit; }
 /* === CTA === */
 .section-cta {
     padding: var(--sp80) 0;
-    background: linear-gradient(160deg, #0f0a06 0%, var(--brown-800) 50%, var(--brown-600) 100%);
+    background:
+        linear-gradient(160deg, rgba(15,10,6,0.88) 0%, rgba(26,18,9,0.80) 45%, rgba(42,30,18,0.72) 100%),
+        url('../Midia/2.png') center / cover no-repeat fixed,
+        #0f0a06;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1452,17 +1534,86 @@ input, select, textarea { font-family: inherit; }
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 500px 400px at 80% 30%, rgba(196,152,42,0.1), transparent),
-        radial-gradient(ellipse 400px 400px at 10% 80%, rgba(196,152,42,0.06), transparent);
+        radial-gradient(ellipse 600px 500px at 80% 30%, rgba(196,152,42,0.18), transparent 60%),
+        radial-gradient(ellipse 500px 400px at 10% 80%, rgba(196,152,42,0.10), transparent 60%);
+    pointer-events: none;
 }
 .section-cta::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
+    pointer-events: none;
 }
 .section-cta .container { position: relative; z-index: 1; }
+
+/* === Section Backgrounds — Light Sections with Subtle Image === */
+#areas.section-light {
+    background:
+        linear-gradient(180deg, rgba(250,247,242,0.95) 0%, rgba(250,247,242,0.97) 50%, rgba(250,247,242,0.95) 100%),
+        url('../Midia/3.png') center / cover no-repeat fixed,
+        var(--bg-main);
+    position: relative;
+}
+#areas.section-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 700px 500px at 50% 0%, rgba(196,152,42,0.05), transparent 70%);
+    pointer-events: none;
+}
+#areas.section-light > .container { position: relative; z-index: 1; }
+
+#softwares.section-white {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.98) 50%, rgba(255,255,255,0.96) 100%),
+        url('../Midia/1.png') center / cover no-repeat fixed,
+        var(--bg-surface);
+    position: relative;
+}
+#softwares.section-white::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 700px 500px at 50% 100%, rgba(196,152,42,0.05), transparent 70%);
+    pointer-events: none;
+}
+#softwares.section-white > .container { position: relative; z-index: 1; }
+
+/* Dark mode adjustments for light sections with images */
+[data-theme="dark"] #areas.section-light {
+    background:
+        linear-gradient(180deg, rgba(10,7,5,0.88) 0%, rgba(15,10,6,0.92) 50%, rgba(10,7,5,0.88) 100%),
+        url('../Midia/3.png') center / cover no-repeat fixed,
+        #0a0705;
+}
+[data-theme="dark"] #softwares.section-white {
+    background:
+        linear-gradient(180deg, rgba(10,7,5,0.90) 0%, rgba(15,10,6,0.94) 50%, rgba(10,7,5,0.90) 100%),
+        url('../Midia/1.png') center / cover no-repeat fixed,
+        #0a0705;
+}
+
+/* Dark mode CTA — deeper overlay on top of image */
+[data-theme="dark"] .section-cta {
+    background:
+        linear-gradient(160deg, rgba(5,3,2,0.92) 0%, rgba(15,10,6,0.85) 45%, rgba(22,15,9,0.80) 100%),
+        url('../Midia/2.png') center / cover no-repeat fixed,
+        #0a0705;
+}
+
+/* Mobile — disable fixed attachment (performance + iOS bug) */
+@media (max-width: 768px) {
+    .section-cta,
+    #areas.section-light,
+    #softwares.section-white,
+    [data-theme="dark"] .section-cta,
+    [data-theme="dark"] #areas.section-light,
+    [data-theme="dark"] #softwares.section-white {
+        background-attachment: scroll, scroll, scroll;
+    }
+}
 .section-cta h2 {
     font-size: 2.4rem;
     font-weight: 800;

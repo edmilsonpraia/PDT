@@ -1,0 +1,18 @@
+# Large media files (GitHub rejects >100MB; host via CDN/YouTube/Vimeo)
+Midia/Media1.mp4
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node / build artifacts (if added later)
+node_modules/
+dist/
+build/
+*.log
