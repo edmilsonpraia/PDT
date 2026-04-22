@@ -57,9 +57,8 @@
                         <span id="lang-label">PT</span>
                     </button>
                     <button class="hamburger" id="nav-toggle" aria-label="Menu">
-                        <span class="hamburger__bar"></span>
-                        <span class="hamburger__bar"></span>
-                        <span class="hamburger__bar"></span>
+                        <svg class="hamburger-icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        <svg class="hamburger-icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
                 </div>
             </div>
@@ -69,7 +68,17 @@
     <main>
         <!-- Blog Hero Banner -->
         <section class="hero" id="blog-hero" style="min-height: 340px; padding-top: 120px; padding-bottom: 60px;">
-            <div class="hero-bg"></div>
+            <div class="hero-bg">
+                <div class="hero-slideshow" aria-hidden="true">
+                    <div class="hero-slide" style="background-image: url('Midia/1.png');"></div>
+                    <div class="hero-slide" style="background-image: url('Midia/2.png');"></div>
+                    <div class="hero-slide" style="background-image: url('Midia/3.png');"></div>
+                </div>
+                <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="Midia/1.png" aria-hidden="true">
+                    <source src="Midia/Media1-web.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay" aria-hidden="true"></div>
+            </div>
             <div class="hero-content container">
                 <h1 class="hero-title" data-i18n="blog.hero.title">Artigos Científicos</h1>
                 <p class="hero-description" data-i18n="blog.hero.desc">
