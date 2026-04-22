@@ -399,13 +399,11 @@ input, select, textarea { font-family: inherit; }
 [data-theme="dark"] .theme-icon-dark { display: none; }
 [data-theme="dark"] .theme-icon-light { display: block; }
 
-/* Hamburger — flex column layout (rock solid, no absolute positioning) */
+/* Hamburger — uses Lucide icons (rock-solid SVG rendering) */
 .hamburger {
     display: none;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     width: 48px;
     height: 48px;
     padding: 0;
@@ -413,38 +411,34 @@ input, select, textarea { font-family: inherit; }
     border: 1px solid rgba(0,0,0,0.12);
     cursor: pointer;
     border-radius: 10px;
+    color: #1a1209;
     transition: background var(--t-base), border-color var(--t-base);
     z-index: 1001;
     flex-shrink: 0;
 }
 .hamburger:hover,
 .hamburger:active {
-    background: rgba(0,0,0,0.09);
-    border-color: rgba(0,0,0,0.18);
+    background: rgba(0,0,0,0.10);
+    border-color: rgba(0,0,0,0.20);
 }
 [data-theme="dark"] .hamburger {
     background: rgba(255,255,255,0.08);
     border-color: rgba(255,255,255,0.15);
+    color: #ffffff;
 }
 [data-theme="dark"] .hamburger:hover,
 [data-theme="dark"] .hamburger:active {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.25);
 }
-.hamburger__bar {
+.hamburger svg {
+    stroke: currentColor;
     display: block;
-    width: 24px;
-    height: 3px;
-    background: #1a1209;
-    border-radius: 2px;
-    transition: transform var(--t-slow) ease-in-out, opacity var(--t-slow) ease-in-out;
-    transform-origin: center;
 }
-[data-theme="dark"] .hamburger__bar { background: #ffffff; }
-/* Hamburger opened → X */
-.hamburger.active .hamburger__bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger.active .hamburger__bar:nth-child(2) { opacity: 0; }
-.hamburger.active .hamburger__bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+/* Swap between menu (open) and X (close) icons based on active state */
+.hamburger-icon-close { display: none !important; }
+.hamburger.active .hamburger-icon-open { display: none !important; }
+.hamburger.active .hamburger-icon-close { display: block !important; }
 
 /* === Buttons === */
 .btn {
