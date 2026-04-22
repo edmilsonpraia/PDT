@@ -399,7 +399,7 @@ input, select, textarea { font-family: inherit; }
 [data-theme="dark"] .theme-icon-dark { display: none; }
 [data-theme="dark"] .theme-icon-light { display: block; }
 
-/* Hamburger — uses Lucide icons (rock-solid SVG rendering) */
+/* Hamburger — inline SVG icons with brand-gold background (impossible to miss) */
 .hamburger {
     display: none;
     align-items: center;
@@ -407,33 +407,32 @@ input, select, textarea { font-family: inherit; }
     width: 48px;
     height: 48px;
     padding: 0;
-    background: rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.12);
+    background: var(--gold);
+    border: none;
     cursor: pointer;
     border-radius: 10px;
-    color: #1a1209;
-    transition: background var(--t-base), border-color var(--t-base);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(196,152,42,0.3);
+    transition: background var(--t-base), box-shadow var(--t-base), transform var(--t-base);
     z-index: 1001;
     flex-shrink: 0;
 }
 .hamburger:hover,
 .hamburger:active {
-    background: rgba(0,0,0,0.10);
-    border-color: rgba(0,0,0,0.20);
+    background: var(--gold-hover);
+    box-shadow: 0 4px 14px rgba(196,152,42,0.45);
+    transform: translateY(-1px);
 }
 [data-theme="dark"] .hamburger {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.15);
-    color: #ffffff;
-}
-[data-theme="dark"] .hamburger:hover,
-[data-theme="dark"] .hamburger:active {
-    background: rgba(255,255,255,0.16);
-    border-color: rgba(255,255,255,0.25);
+    background: var(--gold);
+    color: #1a1209;
+    box-shadow: 0 2px 12px rgba(196,152,42,0.4);
 }
 .hamburger svg {
     stroke: currentColor;
     display: block;
+    width: 28px;
+    height: 28px;
 }
 /* Swap between menu (open) and X (close) icons based on active state */
 .hamburger-icon-close { display: none !important; }
@@ -1879,7 +1878,7 @@ input, select, textarea { font-family: inherit; }
     }
 
     /* Mobile menu: fullscreen sidebar (WellDesk style) */
-    .hamburger { display: flex; }
+    .hamburger { display: flex !important; }
     .header__cta { display: none; }
 
     .header__menu {
